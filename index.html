@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Green Earth</title>
 </head>
-<body>
+<body class="bg-[#f0fcf4]">
     <header>
         <nav class="bg-green-700">
             <div class="w-11/12 mx-auto flex justify-between items-center text-white py-9">
@@ -38,6 +38,27 @@
             </div>
         </div>
     </header>
+    <!-- main area -->
+    <main class="my-[100px]">
+        <h1 class="text-3xl font-bold text-center mb-10">Choose Your Trees</h1>
+        <div class="w-11/12 mx-auto grid grid-cols-12 gap-2">
+            <!-- navbar -->
+            <nav class="col-span-2 py-2">
+                <h1 class="text-xl font-semibold mb-4">Categories</h1>
+                <ul id="category-container"></ul>
+            </nav>
+
+            <!-- card container -->
+            <div class="col-span-8 p-2">
+
+            </div>
+
+            <!-- aside -->
+            <aside class="col-span-2 p-2">
+                <h1 class="text-xl font-semibold mb-4">Your Cart</h1>
+            </aside>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
