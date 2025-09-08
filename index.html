@@ -60,6 +60,22 @@
             </aside>
         </div>
     </main>
+
+    <!-- modal -->
+    <div id="modal-container">
+        <dialog id="details-modal" class="modal">
+                    <div class="modal-box">
+                        <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <h3 id="tree-name" class="text-xl font-bold text-center">Tree Name</h3>
+                        <img id="tree-img" class="rounded-xl my-3 bg-contain h-[300px] w-full" src="" alt="tree name">
+                        <p class="py-2"><b>Category Name:</b> <span id="tree-category"></span></p>
+                        <p><b>Tree Price: </b><span id="tree-price">500</span></p>
+                        <p id="tree-des" class="py-4"></p>
+                    </div>
+        </dialog>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

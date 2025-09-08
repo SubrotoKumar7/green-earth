@@ -92,3 +92,35 @@ const loadCardByCategory = (id) => {
     .then(data => displayDefaultCard(data.plants, catId))
     .catch(err => console.log(`something is wrong`, err))
 }
+
+// loads card details
+cardContainer.addEventListener('click', (event) => {
+    const cardId = event.target.parentNode.id;
+    if(event.target.classList.contains('tree-name')){
+        const url = `https://openapi.programming-hero.com/api/plant/${cardId}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setModalValue(data.plants))
+        .catch(err => console.log("something is wrong", err))
+    };
+})
+
+// set modal value and call
+const setModalValue = data => {
+    const treeName = document.getElementById('tree-name');
+    const treeImg = document.getElementById('tree-img');
+    const treeCategory = document.getElementById('tree-category');
+    const treePrice = document.getElementById('tree-price');
+    const treeDes = document.getElementById('tree-des');
+    const detailsModal = document.getElementById('details-modal');
+
+    treeName.innerHTML = data.name;
+    treeImg.src = data.image;
+    treeCategory.innerHTML = data.category;
+    treePrice.innerHTML = data.price;
+    treeDes.innerHTML = data.description;
+
+    // display modal
+    detailsModal.showModal();
+}
+
