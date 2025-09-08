@@ -1,4 +1,5 @@
 const categoryContainer = document.getElementById('category-container');
+const cardContainer = document.getElementById('card-container');
 
 // load category from api
 const loadCategory = () => {
@@ -39,3 +40,36 @@ categoryContainer.addEventListener('click', (event) => {
         event.target.classList.add('bg-green-700', 'text-white');
     };
 })
+
+// load default card
+const loadDefaultCard = () => {
+    const url = 'https://openapi.programming-hero.com/api/plants';
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayDefaultCard(data.plants))
+    .catch(err => console.log('something is wrong'))
+}
+
+// call default card 
+loadDefaultCard();
+
+// display default card
+const displayDefaultCard = (data) => {
+    data.forEach(tree => {
+        // console.log(tree);
+        const card = document.createElement('div');
+        card.innerHTML = `
+            <div id="${tree.id}" class="p-4 rounded-xl bg-white shadow h-full hover:scale-105 opacity-90 hover:opacity-100">
+                    <img class="mb-3 rounded w-full h-52 bg-cover" src="${tree.image}" alt="${tree.name}">
+                    <h1 class="font-bold">${tree.name}</h1>
+                    <p class="text-gray-500 mt-2">${tree.description}</p>
+                    <div class="flex justify-between items-center my-3">
+                        <div class="py-2 px-3 font-bold text-green-700 bg-green-200 rounded-full">${tree.category}</div>
+                        <p class="font-bold">$<span>${tree.price}</span></p>
+                    </div>
+                    <button class="cart-btn bg-green-700 text-white hover:bg-green-600 cursor-pointer font-semibold py-2 px-1 rounded-full w-full">Add to Cart</button>
+                </div>
+        `;
+        cardContainer.appendChild(card);
+    })
+}
