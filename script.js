@@ -53,8 +53,9 @@ const loadDefaultCard = () => {
 // call default card 
 loadDefaultCard();
 
-// display default card
-const displayDefaultCard = (data) => {
+// display card
+const displayDefaultCard = (data, catId = 0) => {
+    cardContainer.innerHTML = "";
     data.forEach(tree => {
         const card = document.createElement('div');
         card.classList.add('p-4', 'rounded-xl', 'bg-white', 'shadow', 'h-full', 'hover:scale-105', 'opacity-90', 'hover:opacity-100', 'flex', 'flex-col', 'justify-between');
@@ -71,4 +72,23 @@ const displayDefaultCard = (data) => {
         `;
         cardContainer.appendChild(card);
     })
+}
+
+// load card by category
+categoryContainer.addEventListener('click', (event) => {
+    const getId = event.target.id.slice(9);
+    if(event.target.classList.contains('category-btn')){
+        loadCardByCategory(getId);
+    };
+})
+
+
+// loads card by category function 
+const loadCardByCategory = (id) => {
+    const catId = id;
+    const url = `https://openapi.programming-hero.com/api/category/${catId}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayDefaultCard(data.plants, catId))
+    .catch(err => console.log(`something is wrong`, err))
 }
