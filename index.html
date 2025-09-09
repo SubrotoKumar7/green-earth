@@ -27,14 +27,14 @@
                     <li><a href="#">Gallery</a></li>
                     <li><a href="#">Plant a Tree</a></li>
                 </ul>
-                <div>
+                <div class="hidden md:block">
                     <button class="bg-yellow-400 py-2 px-4 text-green-700 rounded-full cursor-pointer">Plant a Tree</button>
                 </div>
             </div>
         </nav>
 
         <!-- banner -->
-        <div class="banner bg-[#CFF0DC] bg-[url('assets/hero-leaf1.png'),_url('assets/hero-leaf2.png')] bg-no-repeat bg-[position:left,_right] bg-contain">
+        <div class="banner bg-[#CFF0DC] md:bg-[url('assets/hero-leaf1.png'),_url('assets/hero-leaf2.png')] bg-no-repeat bg-[position:left,_right] md:bg-contain">
             <div class="w-fit mx-auto py-[100px] text-center">
                 <h1 class="font-bold text-5xl mb-2">Plant a Tree, Grow a Future</h1>
                 <p class="mb-6 opacity-80">Join our mission to plant 1 million trees and make the Earth greener for future <br> generations.</p>
@@ -46,22 +46,22 @@
     <!-- main area -->
     <main class="mt-[100px]">
         <h1 class="text-3xl font-bold text-center mb-10">Choose Your Trees</h1>
-        <div class="w-11/12 mx-auto grid grid-cols-12 gap-2">
+        <div class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-12 gap-2">
             <!-- navbar -->
-            <nav class="col-span-2 py-2">
+            <nav class="order-1 md:order-1 place-items-center md:place-items-start md:col-span-2 py-2">
                 <h1 class="text-xl font-semibold mb-4">Categories</h1>
                 <ul id="category-container"></ul>
             </nav>
 
             <!-- card container -->
-            <div id="card-container" class="col-span-8 grid grid-cols-3 gap-x-5 gap-y-6 p-2">
+            <div id="card-container" class="order-3 md:order-2 md:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-6 p-2">
                 <div class="col-span-12 flex justify-center items-center h-[300px]">
                     <span class="loading loading-dots loading-xl"></span>
                 </div>
             </div>
 
             <!-- aside -->
-            <aside class="col-span-2 py-2 px-3 bg-white mb-5 rounded">
+            <aside class="order-2 md:order-3 md:col-span-2 py-2 px-3 bg-white mb-5 rounded">
                 <h1 class="text-xl text-center font-semibold mb-4">Your Cart</h1>
                 <div id="cart-item-count"></div>
 
@@ -77,9 +77,9 @@
         <!-- campaign section -->
         <section class="w-7/12 mx-auto my-24">
             <h1 class="text-3xl font-semibold my-10 text-center">About this campaign</h1>
-            <div class="flex items-center justify-between gap-6">
-                <img class="w-1/2 p-4 h-full" src="assets/about.png" alt="tree ping">
-                <div class="w-1/2 p-4 text-gray-500">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <img class="w-full md:w-1/2 p-4 h-full" src="assets/about.png" alt="tree ping">
+                <div class="w-full md:w-1/2 p-4 text-gray-500">
                     <p class="my-5">Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
                     <ul class="list-disc list-inside">
                         <li>Restoration of natural habitats</li>
@@ -109,7 +109,7 @@
     <!-- impact section -->
         <section class="bg-[#cff0dc] py-[100px]">
             <h1 class="text-3xl font-semibold my-10 text-center">Our Impact</h1>
-            <div class="w-11/12 mx-auto grid grid-cols-3 gap-10">
+            <div class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="bg-white rounded-lg p-10 text-center">
                     <h1 class="text-3xl font-semibold mb-2 text-green-700">500K+</h1>
                     <p class="text-gray-500">Trees Planted</p>
