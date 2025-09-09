@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- tailwind css -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- daisy UI -->
@@ -74,8 +76,16 @@
             </div>
 
             <!-- aside -->
-            <aside class="col-span-2 p-2">
-                <h1 class="text-xl font-semibold mb-4">Your Cart</h1>
+            <aside class="col-span-2 py-2 px-3 bg-white mb-5 rounded">
+                <h1 class="text-xl text-center font-semibold mb-4">Your Cart</h1>
+                <div id="cart-item-count"></div>
+
+                <div id="cart-container" class="my-3"></div>
+                
+                <div class="flex justify-between text-gray-500 my-2 py-3">
+                    <p class="font-semibold">Total:</p>
+                    <p class="font-semibold">$ <span id="total-price">0</span></p>
+                </div>
             </aside>
         </div>
 

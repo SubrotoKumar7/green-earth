@@ -1,5 +1,10 @@
 const categoryContainer = document.getElementById('category-container');
 const cardContainer = document.getElementById('card-container');
+const cartContainer = document.getElementById('cart-container');
+const cartItemContainer = document.getElementById('cart-item-count');
+let totalPrice = document.getElementById('total-price');
+let isCartItemCountDisplay = false;
+let totalCartItem = 0;
 
 // load category from api
 const loadCategory = () => {
@@ -124,3 +129,72 @@ const setModalValue = data => {
     detailsModal.showModal();
 }
 
+// add too cart
+cardContainer.addEventListener('click', (event) => {
+    const treeName = event.target.parentNode.children[1].innerHTML;
+    const treePrice = event.target.parentNode.children[3].querySelector('span').innerHTML;
+
+    if(event.target.classList.contains('cart-btn')){
+        // add to cart alert
+        alert(`${treeName} has been added to the cart`);
+
+        // total cart item display
+        totalCartItem++;
+        if(isCartItemCountDisplay === false){
+            const div = document.createElement('div');
+            div.classList.add('flex', 'justify-between', 'items-center');
+            div.innerHTML = `
+                        <h2 class="font-semibold text-gray-500">Total Item</h2>
+                        <div class="text-gray-500">
+                            <i class="fa-solid fa-cart-shopping"></i> <span id="total-item">0</span>
+                        </div>
+            `;
+            cartItemContainer.appendChild(div);
+            isCartItemCountDisplay = true;
+            document.getElementById('total-item').innerHTML = totalCartItem;
+        }
+        else{
+            document.getElementById('total-item').innerHTML = totalCartItem;
+        }
+
+
+        const cartCard = document.createElement('div');
+        cartCard.classList.add('flex', 'items-center', 'justify-between', 'gap-2', 'bg-gray-100', 'rounded', 'p-3', 'my-3');
+        cartCard.innerHTML = `
+                        <div>
+                            <h1 class="font-semibold mb-1">${treeName}</h1>
+                            <p class="font-semibold">$<span>${treePrice}</span></p>
+                        </div>
+                        <div>
+                            <p class="remove-btn cursor-pointer">❌</p>
+                        </div>
+        `;
+        cartContainer.appendChild(cartCard);
+
+        // money calculation
+        const totalPriceNum = Number(totalPrice.innerHTML);
+        const cardTreePrice = Number(treePrice);
+        let currentPrice = totalPriceNum + cardTreePrice;
+        totalPrice.innerHTML = currentPrice;
+    };
+})
+
+// remove cart items
+cartContainer.addEventListener('click', (event) => {
+    const cartCardPrice = Number(event.target.parentNode.parentNode.children[0].querySelector('span').innerHTML);
+    const total = Number(totalPrice.innerHTML);
+
+    if(event.target.classList.contains('remove-btn')){
+        // subtraction
+        totalCartItem--;
+        document.getElementById('total-item').innerHTML = totalCartItem;
+
+        // subtraction before item remove
+        let currentPrice = total - cartCardPrice;
+        totalPrice.innerHTML = currentPrice;
+
+        // remove element
+        const cart = event.target.parentNode.parentNode;
+        cart.remove();
+    };
+})
